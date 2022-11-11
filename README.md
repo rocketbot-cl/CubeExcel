@@ -1,43 +1,48 @@
-# cubeExcel
+# Cube Excel
+  
+Module with options to work with pivot tables in excel cube files  
 
-Module with options to work Pivot tables in excel cube files
+*Read this in other languages: [English](README.md), [Español](README.es.md).*
+
+## How to install this module
+  
+__Download__ and __install__ the content in 'modules' folder in Rocketbot path  
 
 
-<ul>
-  <li>Agregar campo</li>  
-  <li>Abrir campos</li>
-  <li>Filtrar</li>
-  <li>Listar campos</li>
-  <li>Listar subcampos</li>
- 
-</ul>  
 
-**In the example robot you must change the URL for yours.
+## Overview
 
-![alt text](https://github.com/rocketbot-cl/cubeexcel/blob/master/example/cube.png)
 
-<h2>Dependencies</h2>
+1. Refresh Pivot table  
+Refresh a pivot table
 
-<ul>
-  <li>
-    <strong>
-      <a href="https://pypi.org/project/xlwings/">xlwings</a>
-    </strong> 
-  </li>  
-</ul>  
+2. Add field - Cube  
+Add field to a pivot table
 
-<ul>
-  <li>
-    <strong>
-      <a href="https://pypi.org/project/xlwings/">xlwings</a>
-    </strong> 
-  </li>  
-</ul>  
+3. Add Filter - Cube  
+Filter a pivot table
 
-<h2>License</h2>
+4. Open Field  
+Open a field. Similar to click on plus button
 
-<p><a href="http://badges.mit-license.org" rel="nofollow"><img src="https://camo.githubusercontent.com/107590fac8cbd65071396bb4d04040f76cde5bde/687474703a2f2f696d672e736869656c64732e696f2f3a6c6963656e73652d6d69742d626c75652e7376673f7374796c653d666c61742d737175617265" alt="License" data-canonical-src="http://img.shields.io/:license-mit-blue.svg?style=flat-square" style="max-width:100%;"></a></p>
+5. List Fields  
+List all available table fields
 
-<ul>
-  <li><strong><a href="http://opensource.org/licenses/mit-license.php" rel="nofollow">MIT license</a></strong></li>
-</ul>  
+6. List SubField  
+List Pivot Table from a Cube Field  
+
+
+
+
+----
+### OS
+
+- windows
+- mac
+
+### Dependencies
+- [**xlwings**](https://pypi.org/project/xlwings/)
+### License
+  
+![MIT](https://camo.githubusercontent.com/107590fac8cbd65071396bb4d04040f76cde5bde/687474703a2f2f696d672e736869656c64732e696f2f3a6c6963656e73652d6d69742d626c75652e7376673f7374796c653d666c61742d737175617265)  
+[MIT](http://opensource.org/licenses/mit-license.ph)
