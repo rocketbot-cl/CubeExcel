@@ -1,3 +1,3 @@
 ## CubeExcel
 
- view the documentation at: https://github.com/rocketbot-cl/SAPB1/blob/master/example/Manual_CubeExcel.pdf
+ view the documentation at: https://github.com/rocketbot-cl/CubeExcel/blob/master/example/Manual_CubeExcel.pdf
