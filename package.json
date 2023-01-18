@@ -2,7 +2,7 @@
   "author": "Danilo Toro ",
   "description": "Módulo con opciones para trabajar tablas dinámicas en archivos cube de excel",
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "1.0",
+  "version": "1.0.1",
   "license": "MIT",
   "homepage": "http://rocketbot.co/",
   "linux": false,
@@ -45,6 +45,10 @@
               "es": "Hoja: ",
               "en": "Sheet: "
             },
+            "description": {
+              "es": "Nombre de la hoja donde se encuentra la tabla dinámica",
+              "en": "Name of the sheet where the pivot table is located"
+            },
             "id": "sheet",
             "css": "col-md-6"
           },
@@ -57,6 +61,10 @@
             "title": {
               "es": "Nombre de la tabla dinámica: ",
               "en": "Pivote table name: "
+            },
+            "description": {
+              "es": "Nombre de la tabla dinámica",
+              "en": "Pivot table name"
             },
             "id": "table",
             "css": "col-md-6"
@@ -102,6 +110,10 @@
               "es": "Hoja: ",
               "en": "Sheet: "
             },
+            "description": {
+              "es": "Nombre de la hoja donde se encuentra la tabla dinámica",
+              "en": "Name of the sheet where the pivot table is located"
+            },
             "id": "sheet",
             "css": "col-md-6"
           },
@@ -115,6 +127,10 @@
               "es": "Nombre de la tabla dinámica: ",
               "en": "Pivote table name: "
             },
+            "description": {
+              "es": "Nombre de la tabla dinámica",
+              "en": "Pivot table name"
+            },
             "id": "table",
             "css": "col-md-6"
           },
@@ -123,6 +139,10 @@
             "title": {
               "es": "Selecciona una opción",
               "en": "Select option"
+            },
+            "description": {
+              "es": "Selecciona lo que deseas agregar",
+              "en": "Select what you want to add"
             },
             "options": [
               {
@@ -154,6 +174,10 @@
             "title": {
               "es": "Campo a agregar",
               "en": "Field to add "
+            },
+            "description": {
+              "es": "Nombre del campo a agregar",
+              "en": "Name of the field to add"
             },
             "id": "data",
             "css": "col-md-6"
@@ -199,6 +223,10 @@
               "es": "Hoja: ",
               "en": "Sheet: "
             },
+            "description": {
+              "es": "Nombre de la hoja donde se encuentra la tabla dinámica",
+              "en": "Name of the sheet where the pivot table is located"
+            },
             "id": "sheet",
             "css": "col-md-6"
           },
@@ -211,6 +239,10 @@
             "title": {
               "es": "Nombre de la tabla dinámica: ",
               "en": "Pivote table name: "
+            },
+            "description": {
+              "es": "Nombre de la tabla dinámica",
+              "en": "Pivote table name"
             },
             "id": "table",
             "css": "col-md-6"
@@ -225,6 +257,10 @@
               "es": "Filter ",
               "en": "Filter: "
             },
+            "description": {
+              "es": "Filtro a aplicar",
+              "en": "Filter to apply"
+            },
             "id": "data",
             "css": "col-md-6"
           },
@@ -237,6 +273,10 @@
             "title": {
               "es": "Filtro abierto: ",
               "en": "Opened Filter: "
+            },
+            "description": {
+              "es": "Filtro abierto",
+              "en": "Opened Filter"
             },
             "id": "more",
             "css": "col-md-6"
@@ -281,6 +321,10 @@
               "es": "Hoja: ",
               "en": "Sheet: "
             },
+            "description": {
+              "es": "Nombre de la hoja",
+              "en": "Sheet name"
+            },
             "id": "sheet",
             "css": "col-md-6"
           },
@@ -293,6 +337,10 @@
             "title": {
               "es": "Nombre de la tabla dinámica: ",
               "en": "Pivote table name: "
+            },
+            "description": {
+              "es": "Nombre de la tabla dinámica",
+              "en": "Pivote table name"
             },
             "id": "table",
             "css": "col-md-6"
@@ -307,6 +355,10 @@
               "es": "Campo ",
               "en": "Field: "
             },
+            "description": {
+              "es": "Nombre del campo",
+              "en": "Field name"
+            },
             "id": "data",
             "css": "col-md-6"
           },
@@ -319,6 +371,10 @@
             "title": {
               "es": "Campo celda: ",
               "en": "Cell field: "
+            },
+            "description": {
+              "es": "Nombre del campo de celda",
+              "en": "Cell field name"
             },
             "id": "child",
             "css": "col-md-6"
@@ -364,6 +420,10 @@
               "es": "Hoja: ",
               "en": "Sheet: "
             },
+            "description": {
+              "es": "Nombre de la hoja",
+              "en": "Sheet name"
+            },
             "id": "sheet",
             "css": "col-md-6"
           },
@@ -377,6 +437,10 @@
               "es": "Nombre de la tabla dinámica: ",
               "en": "Pivote table name: "
             },
+            "description": {
+              "es": "Nombre de la tabla dinámica",
+              "en": "Pivote table name"
+            },
             "id": "table",
             "css": "col-md-6"
           },
@@ -389,6 +453,10 @@
             "title": {
               "es": "Asignar resultado a variable",
               "en": "Assign result to variable: "
+            },
+            "description": {
+              "es": "Nombre de la variable donde se almacenará el resultado",
+              "en": "Variable name where the result will be stored"
             },
             "help": {
               "es": "Nombre de variable sin llaves {}",
@@ -437,6 +505,10 @@
               "es": "Hoja: ",
               "en": "Sheet: "
             },
+            "description": {
+              "es": "Nombre de la hoja donde se encuentra el campo",
+              "en": "Sheet name where the field is located"
+            },
             "id": "sheet",
             "css": "col-md-6"
           },
@@ -449,6 +521,10 @@
             "title": {
               "es": "Nombre de la tabla dinámica: ",
               "en": "Pivote table name: "
+            },
+            "description": {
+              "es": "Nombre de la tabla dinámica donde se encuentra el campo",
+              "en": "Pivote table name where the field is located"
             },
             "id": "table",
             "css": "col-md-6"
@@ -463,6 +539,10 @@
               "es": "Campo ",
               "en": "Field: "
             },
+            "description": {
+              "es": "Nombre del campo",
+              "en": "Field name"
+            },
             "id": "data",
             "css": "col-md-6"
           },
@@ -475,6 +555,10 @@
             "title": {
               "es": "Asignar resultado a variable",
               "en": "Assign result to variable: "
+            },
+            "description": {
+              "es": "Nombre de la variable donde se almacenará el resultado",
+              "en": "Variable name where the result will be stored"
             },
             "help": {
               "es": "Nombre de variable sin llaves {}",
