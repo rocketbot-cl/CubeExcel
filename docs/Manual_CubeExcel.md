@@ -69,3 +69,4 @@ List Pivot Table from a Cube Field
 |Pivote table name |Pivote table name where the field is located|Name: |
 |Field |Field name|[Field]: |
 |Assign result to variable |Variable name where the result will be stored|Variable|
+
