@@ -1,13 +1,18 @@
+
+
+
+
 # Cube Excel
   
-Module with options to work with pivot tables in excel cube files  
+Module to work with Excel OLAP/Cube Pivot Tables  
 
-*Read this in other languages: [English](README.md), [Español](README.es.md).*
+*Read this in other languages: [English](README.md), [Português](README.pr.md), [Español](README.es.md)*
 
 ## How to install this module
   
-__Download__ and __install__ the content in 'modules' folder in Rocketbot path  
-
+To install the module in Rocketbot Studio, it can be done in two ways:
+1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
+2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
 
 
 ## Overview
@@ -16,19 +21,34 @@ __Download__ and __install__ the content in 'modules' folder in Rocketbot path
 1. Refresh Pivot table  
 Refresh a pivot table
 
-2. Add field - Cube  
+2. Add Field - Cube  
 Add field to a pivot table
 
-3. Add Filter - Cube  
+3. Remove Field - Cube  
+Remove field from a pivot table
+
+4. Add Filter - Cube  
 Filter a pivot table
 
-4. Open Field  
+5. Apply Filter - Cube  
+Filter a pivot table
+
+6. Clear Filter - Cube  
+Clear a filter from a pivot table
+
+7. Clear All Filters - Cube  
+Clear all filters from a pivot table
+
+8. List Visible Items - Cube  
+List visible items of a field from a Pivot Table - Cube
+
+9. Open Field  
 Open a field. Similar to click on plus button
 
-5. List Fields  
+10. List Fields  
 List all available table fields
 
-6. List SubField  
+11. List SubField  
 List Pivot Table from a Cube Field  
 
 

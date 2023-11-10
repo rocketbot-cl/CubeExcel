@@ -29,8 +29,15 @@ import os
 import sys
 
 base_path = tmp_global_obj["basepath"]
-cur_path = base_path + 'modules' + os.sep + 'AdvancedExcel' + os.sep + 'libs' + os.sep
-sys.path.append(cur_path)
+cur_path = base_path + 'modules' + os.sep + 'CubeExcel' + os.sep + 'libs' + os.sep
+
+cur_path_x64 = os.path.join(cur_path, 'Windows' + os.sep +  'x64' + os.sep)
+cur_path_x86 = os.path.join(cur_path, 'Windows' + os.sep +  'x86' + os.sep)
+
+if sys.maxsize > 2**32 and cur_path_x64 not in sys.path:
+        sys.path.append(cur_path_x64)
+if sys.maxsize <= 2**32 and cur_path_x86 not in sys.path:
+        sys.path.append(cur_path_x86)
 
 global constants
 
@@ -55,7 +62,6 @@ if module == "pivotTable":
         pivotTable = wb.api.ActiveSheet.PivotTables(pivotTableName)
         cubeField = pivotTable.CubeFields(data)
         if option != "data":
-            cubeField = pivotTable.CubeFields(data)
             cubeField.Orientation = constants[option]
             cubeField.Position = 1
 
@@ -63,6 +69,27 @@ if module == "pivotTable":
             title = data.split(".")[-1]
             title = title.replace("[", "").replace("]", "")
             pivotTable.AddDataField(cubeField, title)
+
+    except Exception as e:
+        PrintException()
+        raise e
+    
+if module == "removeField":
+
+    sheet = GetParams("sheet")
+    pivotTableName = GetParams("table")
+    data = GetParams("data")
+
+    excel = GetGlobals("excel")
+    xls = excel.file_[excel.actual_id]
+
+    try:
+        wb = xls['workbook']
+        sht = wb.sheets[sheet].select()
+
+        pivotTable = wb.api.ActiveSheet.PivotTables(pivotTableName)
+        cubeField = pivotTable.CubeFields(data)
+        cubeField.Orientation = 0 #xlHidden
 
     except Exception as e:
         PrintException()
@@ -103,7 +130,10 @@ if module == "filter":
             father = data
 
         pivotTable = wb.api.ActiveSheet.PivotTables(pivotTableName)
-        cubeField = pivotTable.CubeFields(father)
+        try:
+            cubeField = pivotTable.CubeFields(father)
+        except:
+            cubeField = pivotTable.CubeFields(data)
 
         cubeField.Orientation = constants["xlPageField"]
         cubeField.Position = 1
@@ -111,10 +141,124 @@ if module == "filter":
             more = data.split(".")[0][1:-1]
             more = "[{data}].[All {data}]".format(data=more)
 
-        print(more)
+        try:
+            pivotTable.PivotFields(data).CurrentPageName = more
+        except:
+            pass
+    except Exception as e:
+        PrintException()
+        raise e
 
-        pivotTable.PivotFields(data).CurrentPageName = more
+if module == "applyFilter":
+    sheet = GetParams("sheet")
+    pivotTableName = GetParams("table")
+    field = GetParams("data")
+    filter = GetParams("filter")
+    numAsText = GetParams("numAsText")
 
+    if not filter:
+        filter = ['']
+    
+    excel = GetGlobals("excel")
+    xls = excel.file_[excel.actual_id]
+    try:
+        wb = xls['workbook']
+        sht = wb.sheets[sheet].select()
+        pivotTable = wb.api.ActiveSheet.PivotTables(pivotTableName)
+        pivotTable.PivotCache().refresh()
+        
+        pivotField = pivotTable.PivotFields(field)     
+        
+        global parent_
+        parent_ = ".".join(pivotField.Name.split('.')[:-1])
+        cubeField = pivotTable.CubeFields(parent_)
+        cubeField.EnableMultiplePageItems = True
+        
+        if filter == ['']:
+            pivotField.VisibleItemsList = filter
+        else:
+            if filter.startswith("["):
+                filter = eval(filter)
+            else:
+                if "," in filter:
+                    filter = filter.split(",")
+                else:
+                    filter = [filter]
+            filter_aux = []
+            for f in filter:
+                if f.isnumeric():
+                    if numAsText and eval(numAsText):
+                        pass
+                    elif len(f) == 1:
+                        f = str(f) + "."
+                    else:
+                        point = str(float("0."+str(f)[1:])).replace("0.", "")
+                        
+                        f = str(f)[0] + "." + point + "E" + str(len(f)-1)
+                filter_aux.append(f)
+
+            filter_ = [parent_+f".&[{value}]" for value in filter_aux]
+            
+            print(filter_)
+            pivotField.VisibleItemsList = filter_
+
+    except Exception as e:
+        PrintException()
+        raise e
+
+if module == "clearFilter":
+    sheet = GetParams("sheet")
+    pivotTableName = GetParams("table")
+    field = GetParams("data")   
+
+    excel = GetGlobals("excel")
+    xls = excel.file_[excel.actual_id]
+    try:
+        wb = xls['workbook']
+        sht = wb.sheets[sheet].select()
+        pivotTable = wb.api.ActiveSheet.PivotTables(pivotTableName)
+        
+        pivotField = pivotTable.PivotFields(field)
+        pivotField.VisibleItemsList = [""]
+        
+    except Exception as e:
+        PrintException()
+        raise e
+
+if module == "clearAllFilters":
+    sheet = GetParams("sheet")
+    pivotTableName = GetParams("table")
+
+    excel = GetGlobals("excel")
+    xls = excel.file_[excel.actual_id]
+    try:
+        wb = xls['workbook']
+        sht = wb.sheets[sheet].select()
+        pivotTable = wb.api.ActiveSheet.PivotTables(pivotTableName)
+        pivotTable.ClearAllFilters()
+        
+    except Exception as e:
+        PrintException()
+        raise e
+
+if module == "getVisibleItems":
+    sheet = GetParams("sheet")
+    pivotTableName = GetParams("table")
+    field = GetParams("data")   
+    result = GetParams("result")
+    
+    excel = GetGlobals("excel")
+    xls = excel.file_[excel.actual_id]
+    try:
+        wb = xls['workbook']
+        sht = wb.sheets[sheet].select()
+        pivotTable = wb.api.ActiveSheet.PivotTables(pivotTableName)
+        
+        pivotField = pivotTable.PivotFields(field)      
+        visible = list(pivotField.VisibleItemsList)
+        
+        SetVar(result, visible)
+        
     except Exception as e:
         PrintException()
         raise e
@@ -158,9 +302,7 @@ if module == "listFields":
         sht = wb.sheets[sheet].select()
 
         pivotTable = wb.api.ActiveSheet.PivotTables(pivotTableName)
-
         cubeFields = pivotTable.CubeFields
-
         fields = [field.Name for field in cubeFields]
 
         SetVar(result, fields)
@@ -182,10 +324,11 @@ if module == "listSubField":
         sht = wb.sheets[sheet].select()
 
         pivotTable = wb.api.ActiveSheet.PivotTables(pivotTableName)
-        print(pivotTable.Name)
-        cubeFields = pivotTable.CubeFields("[{}]".format(field))
-
-        
+        try:
+            cubeFields = pivotTable.CubeFields("[{}]".format(field))
+        except:
+            cubeFields = pivotTable.CubeFields(field)
+            
         fields = [e.Name for e in cubeFields.PivotFields]
 
         SetVar(result, fields)
