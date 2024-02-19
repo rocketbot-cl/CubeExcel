@@ -174,16 +174,18 @@ if module == "applyFilter":
         cubeField = pivotTable.CubeFields(parent_)
         cubeField.EnableMultiplePageItems = True
         
-        if filter == ['']:
+        if filter.startswith("["):
+            filter = eval(filter)
+        else:
+            if "," in filter:
+                filter = filter.split(",")
+            else:
+                filter = [filter]
+        
+        filter_parent = [parent_ == ".".join(f.split('.')[:-1]) for f in filter]
+        if all(filter_parent) or filter == ['']:
             pivotField.VisibleItemsList = filter
         else:
-            if filter.startswith("["):
-                filter = eval(filter)
-            else:
-                if "," in filter:
-                    filter = filter.split(",")
-                else:
-                    filter = [filter]
             filter_aux = []
             for f in filter:
                 if f.isnumeric():
@@ -196,10 +198,9 @@ if module == "applyFilter":
                         
                         f = str(f)[0] + "." + point + "E" + str(len(f)-1)
                 filter_aux.append(f)
-
+            
             filter_ = [parent_+f".&[{value}]" for value in filter_aux]
             
-            print(filter_)
             pivotField.VisibleItemsList = filter_
 
     except Exception as e:
